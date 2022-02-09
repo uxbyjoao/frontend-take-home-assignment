@@ -1,5 +1,9 @@
-import React from 'react';
+import * as S from './styles';
 
-export function App(): JSX.Element {
-  return <div data-testid="greetings-container">Welcome to the Origin THA</div>;
+function App(): JSX.Element {
+  return (
+    <S.App data-testid="greetings-container">Welcome to the Origin THA</S.App>
+  );
 }
+
+export { App };
