@@ -22,7 +22,7 @@
       "error",
       {
         "selector": "default",
-        "format": ["camelCase"],
+        "format": ["camelCase", "PascalCase"],
         "leadingUnderscore": "allow",
         "trailingUnderscore": "allow"
       },
@@ -39,6 +39,10 @@
       {
         "selector": "function",
         "format": ["PascalCase", "camelCase"]
+      },
+      {
+        "selector": "property",
+        "format": ["camelCase", "PascalCase"]
       }
     ]
   },

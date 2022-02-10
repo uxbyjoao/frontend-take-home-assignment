@@ -1,21 +1,28 @@
 import { globalCss } from '@stitches/react';
-
-import { styled } from 'theme';
-
-export const App = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  minHeight: '100vh',
-  backgroundColor: '$blueGray10',
-  fontFamily: '$workSans',
-  fontWeight: '$medium',
-});
+import { toRem } from 'theme/helpers';
 
 export const globalStyles = globalCss({
   '*': {
     margin: 0,
     padding: 0,
     boxSizing: 'border-box',
+    fontFamily: '$workSans',
+    fontSize: toRem(16),
+  },
+
+  b: {
+    fontSize: 'inherit',
+    fontWeight: '$semiBold',
+  },
+
+  /* Chrome, Safari, Edge, Opera */
+  'input::-webkit-outer-spin-button, input::-webkit-inner-spin-button': {
+    '-webkit-appearance': 'none',
+    margin: 0,
+  },
+
+  /* Firefox */
+  'input[type=number]': {
+    '-moz-appearance': 'textfield',
   },
 });
