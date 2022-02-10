@@ -6,6 +6,7 @@ const radii: Record<string, string> = {
   lg: toRem(8),
   xl: toRem(24),
   circle: '50%',
+  pill: toRem(9999),
 };
 
 export default radii;
