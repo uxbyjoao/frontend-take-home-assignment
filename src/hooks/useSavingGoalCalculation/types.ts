@@ -3,5 +3,6 @@ export type SavingGoalCalculationState = {
   reachDate: Date;
   monthlyAmount: number;
   setAmount: (amount: string) => void;
-  setReachDate: (reachDate: Date) => void;
+  incrementReachDate: () => void;
+  decrementReachDate: () => void;
 };
