@@ -17,6 +17,5 @@ export type TypographyProps = {
     | 'subtitle'
     | 'description'
     | 'caption'
-    | 'paragraph'
-    | 'paragraphSemibold';
+    | 'paragraph';
 };
