@@ -8,6 +8,7 @@ const variants = {
   description: S.Description,
   caption: S.Caption,
   paragraph: S.Paragraph,
+  paragraphSemibold: S.ParagraphSemibold,
 };
 
 function Typography(props: T.TypographyProps): JSX.Element {

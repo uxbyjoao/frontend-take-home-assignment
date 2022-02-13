@@ -84,6 +84,10 @@ export const Paragraph = styled('p', {
   variants,
 });
 
+export const ParagraphSemibold = styled(Paragraph, {
+  fontWeight: '$semiBold',
+});
+
 export const Description = styled('span', {
   fontSize: toRem(12),
   lineHeight: toRem(18),
