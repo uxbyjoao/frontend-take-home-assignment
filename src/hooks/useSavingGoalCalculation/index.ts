@@ -1,5 +1,4 @@
 import create, { SetState } from 'zustand';
-import { devtools } from 'zustand/middleware';
 
 import {
   formatNumberToLocaleString,
@@ -52,7 +51,7 @@ const setReachDate = (
 };
 
 const useSavingGoalCalculation = create<T.SavingGoalCalculationState>(
-  devtools((set) => ({
+  (set) => ({
     amount: '0',
     reachDate: new Date(new Date().setMonth(new Date().getMonth() + 1)),
     monthlyAmount: 0,
@@ -61,7 +60,7 @@ const useSavingGoalCalculation = create<T.SavingGoalCalculationState>(
       set((state) => setReachDate(subtractMonth(state.reachDate, 1), set)),
     incrementReachDate: () =>
       set((state) => setReachDate(sumMonth(state.reachDate, 1), set)),
-  }))
+  })
 );
 
 export { useSavingGoalCalculation };
