@@ -4,9 +4,9 @@ import * as S from './Card.styles';
 import * as T from './Card.types';
 
 function Card(props: T.CardProps): JSX.Element {
-  const { children } = props;
+  const { children, ...rest } = props;
 
-  return <S.Card>{children}</S.Card>;
+  return <S.Card {...rest}>{children}</S.Card>;
 }
 
 function CardHeader(props: T.CardHeaderProps): JSX.Element {
