@@ -31,32 +31,6 @@ export const CalculationFields = styled('div', {
     flexDirection: 'column',
   },
 
-  input: {
-    width: '100%',
-    height: toRem(56),
-    paddingLeft: toRem(44),
-    fontFamily: '$rubik',
-    fontSize: toRem(20),
-    fontWeight: '$medium',
-    lineHeight: toRem(24),
-    color: '$blueGray600',
-    border: '1px solid $blueGray50',
-    borderRadius: '$md',
-    outlineColor: '$brandColorSecondary',
-    transition: 'outline-color 175ms ease-in-out',
-    willChange: 'outline-color',
-
-    backgroundPosition: 'left center',
-    backgroundPositionX: toRem(12),
-    backgroundRepeat: 'no-repeat',
-    backgroundImage: 'url(/icons/dollar-sign.svg)',
-
-    '@desktop': {
-      fontSize: toRem(24),
-      lineHeight: toRem(28.8),
-    },
-  },
-
   '@desktop': {
     gridTemplateColumns: toRem(272, 192),
   },
@@ -68,6 +42,7 @@ export const CalculationDetails = styled('div', {
   marginTop: toRem(24),
   border: '1px solid $blueGray50',
   borderRadius: '$lg',
+  overflow: 'hidden',
 
   div: {
     display: 'flex',

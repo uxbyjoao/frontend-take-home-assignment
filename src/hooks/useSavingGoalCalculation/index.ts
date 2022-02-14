@@ -4,16 +4,12 @@ import {
   formatNumberToLocaleString,
   sanitizeStringToNumber,
 } from 'helpers/number';
-import { subtractMonth, sumMonth } from 'helpers/date';
+import { subtractMonth, sumMonth, getMonthsFromNow } from 'helpers/date';
 
 import * as T from './types';
 
 const calculateMonthlyAmount = (amount: number, reachDate: Date): number => {
-  const now = new Date();
-  const months =
-    (reachDate.getFullYear() - now.getFullYear()) * 12 +
-    reachDate.getMonth() -
-    now.getMonth();
+  const months = getMonthsFromNow(reachDate);
 
   return amount / months;
 };
@@ -43,6 +39,7 @@ const setReachDate = (
   set((state) => ({
     ...state,
     reachDate,
+    months: getMonthsFromNow(reachDate),
     monthlyAmount: calculateMonthlyAmount(
       sanitizeStringToNumber(state.amount),
       reachDate
@@ -55,6 +52,7 @@ const useSavingGoalCalculation = create<T.SavingGoalCalculationState>(
     amount: '0',
     reachDate: new Date(new Date().setMonth(new Date().getMonth() + 1)),
     monthlyAmount: 0,
+    months: 1,
     setAmount: (amount) => setAmount(amount, set),
     decrementReachDate: () =>
       set((state) => setReachDate(subtractMonth(state.reachDate, 1), set)),

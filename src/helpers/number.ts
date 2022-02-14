@@ -1,16 +1,5 @@
-type Locale =
-  | 'en-US'
-  | 'de-DE'
-  | 'fr-FR'
-  | 'it-IT'
-  | 'es-ES'
-  | 'pt-PT'
-  | 'pt-BR';
-
-type Currency = {
-  locale: Locale;
-  symbol: 'USD' | 'EUR' | 'GBP' | 'BRL' | 'CAD';
-};
+import { Locale } from 'types/locale';
+import { Currency } from 'types/currency';
 
 export const currency = (value: number, currency?: Currency): string => {
   const { locale = 'en-US', symbol = 'USD' } = currency || {};

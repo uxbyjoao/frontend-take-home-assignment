@@ -1,11 +1,60 @@
-import { Card, Header, Typography } from 'components';
-import buyHouse from 'assets/icons/buy-a-house.svg';
+import { Card, Header, Input, MonthInput, Typography } from 'components';
 
+import { useSavingGoalCalculation } from 'hooks/useSavingGoalCalculation';
+import { SavingGoalCalculationState } from 'hooks/useSavingGoalCalculation/types';
+
+import buyHouse from 'assets/icons/buy-a-house.svg';
 import * as S from './App.styles';
+import shallow from 'zustand/shallow';
+import { currency, sanitizeStringToNumber } from 'helpers/number';
+import { getMonthLongName } from 'helpers/date';
+
+const useSavingGoalCalculationSelector = (
+  state: SavingGoalCalculationState
+) => ({
+  amount: state.amount,
+  reachDate: state.reachDate,
+  monthlyAmount: state.monthlyAmount,
+  months: state.months,
+  incrementReachDate: state.incrementReachDate,
+  decrementReachDate: state.decrementReachDate,
+  setAmount: state.setAmount,
+});
 
 function App(): JSX.Element {
+  const {
+    amount,
+    reachDate,
+    monthlyAmount,
+    months,
+    incrementReachDate,
+    decrementReachDate,
+    setAmount,
+  } = useSavingGoalCalculation(useSavingGoalCalculationSelector, shallow);
+
+  const renderDetails = () => {
+    const goal = currency(sanitizeStringToNumber(amount));
+    const monthLongName = getMonthLongName(reachDate);
+    const fullYear = reachDate.getFullYear();
+
+    return (
+      <Typography variant="caption" color="blueGray900" align="center">
+        You&apos;re planning<b> {months} monthly deposits </b>
+        to reach your
+        <b> {goal} </b>
+        goal by
+        <b>
+          &nbsp;
+          {monthLongName}
+          &nbsp;
+          {fullYear}.
+        </b>
+      </Typography>
+    );
+  };
+
   return (
-    <S.App data-testid="greetings-container">
+    <S.App>
       <Header />
 
       <S.Title>
@@ -27,7 +76,13 @@ function App(): JSX.Element {
               <Typography variant="description" color="blueGray900">
                 Total amount
               </Typography>
-              <input type="number" />
+              <Input
+                name="amount"
+                icon="dollar"
+                type="text"
+                value={amount}
+                onChange={(e) => setAmount(e.currentTarget.value)}
+              />
             </label>
 
             <label>
@@ -35,7 +90,13 @@ function App(): JSX.Element {
                 Reach goal by
               </Typography>
 
-              <input />
+              <MonthInput
+                name="reachDate"
+                date={reachDate}
+                decrementMonth={decrementReachDate}
+                incrementMonth={incrementReachDate}
+                data-testid="reachDate"
+              />
             </label>
           </S.CalculationFields>
 
@@ -44,22 +105,22 @@ function App(): JSX.Element {
               <Typography variant="subtitle" color="blueGray900">
                 Monthly amount
               </Typography>
-              <Typography variant="headingMedium" color="brandColorSecondary">
-                $520.83
+
+              <Typography
+                variant="headingMedium"
+                color="brandColorSecondary"
+                data-testid="monthlyAmount"
+              >
+                {currency(monthlyAmount)}
               </Typography>
             </div>
-            <div>
-              <Typography variant="caption" color="blueGray900" align="center">
-                You&apos;re planning<b>&nbsp;48 monthly deposits&nbsp;</b>to
-                reach your
-                <b>&nbsp;$25,000&nbsp;</b>goal by<b>&nbsp;October 2020.</b>
-              </Typography>
-            </div>
+
+            <div>{renderDetails()}</div>
           </S.CalculationDetails>
         </Card.CardBody>
 
         <Card.CardFooter>
-          <S.ConfirmButton>Confirm</S.ConfirmButton>
+          <S.ConfirmButton data-testid="confirmButton">Confirm</S.ConfirmButton>
         </Card.CardFooter>
       </Card.Card>
     </S.App>
