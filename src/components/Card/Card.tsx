@@ -10,12 +10,12 @@ function Card(props: T.CardProps): JSX.Element {
 }
 
 function CardHeader(props: T.CardHeaderProps): JSX.Element {
-  const { icon, title, subtitle } = props;
+  const { icon, title, subtitle, titleAs } = props;
 
   return (
     <S.CardHeader>
-      <img src={icon} alt={title} />
-      <Typography variant="headingSmall" color="blueGray900">
+      <img src={icon} alt={`card header - ${title}`} />
+      <Typography variant="headingSmall" color="blueGray900" as={titleAs}>
         {title}
       </Typography>
 

@@ -11,12 +11,12 @@ const variants = {
 };
 
 function Typography(props: T.TypographyProps): JSX.Element {
-  const { children, color, variant, align = 'left', ...rest } = props;
+  const { children, color, variant, as, align = 'left', ...rest } = props;
 
   const TypographyComponent = variants[variant] as React.ElementType;
 
   return (
-    <TypographyComponent align={align} color={color} {...rest}>
+    <TypographyComponent as={as} align={align} color={color} {...rest}>
       {children}
     </TypographyComponent>
   );

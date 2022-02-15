@@ -36,10 +36,12 @@ function MonthInput(props: T.MonthInputProps): JSX.Element {
 
       <S.DecrementButton
         data-testid="decrementButton"
+        aria-label="Decrement month"
         onClick={decrementMonth}
       />
       <S.IncrementButton
         data-testid="incrementButton"
+        aria-label="Increment month"
         onClick={incrementMonth}
       />
     </S.MonthInputWrapper>

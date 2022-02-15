@@ -1,5 +1,6 @@
 export type TypographyProps = {
   align?: 'left' | 'center' | 'right';
+  as?: string;
   children: React.ReactNode;
   color:
     | 'brandColorPrimary'

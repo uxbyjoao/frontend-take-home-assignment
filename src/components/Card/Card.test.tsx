@@ -28,7 +28,9 @@ describe('Card', () => {
     expect(card).toBeVisible();
     expect(card).toContainElement(screen.getByText('CardHeader Title'));
     expect(card).toContainElement(screen.getByText('CardHeader Subtitle'));
-    expect(card).toContainElement(screen.getByAltText('CardHeader Title'));
+    expect(card).toContainElement(
+      screen.getByAltText('card header - CardHeader Title')
+    );
     expect(card).toContainElement(screen.getByText('CardBody'));
     expect(card).toContainElement(screen.getByText('CardFooter'));
   });

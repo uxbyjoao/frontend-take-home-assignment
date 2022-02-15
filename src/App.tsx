@@ -6,7 +6,7 @@ import { SavingGoalCalculationState } from 'hooks/useSavingGoalCalculation/types
 import buyHouse from 'assets/icons/buy-a-house.svg';
 import * as S from './App.styles';
 import shallow from 'zustand/shallow';
-import { currency, sanitizeStringToNumber } from 'helpers/number';
+import { currency } from 'helpers/number';
 import { getMonthLongName } from 'helpers/date';
 
 const useSavingGoalCalculationSelector = (
@@ -33,22 +33,18 @@ function App(): JSX.Element {
   } = useSavingGoalCalculation(useSavingGoalCalculationSelector, shallow);
 
   const renderDetails = () => {
-    const goal = currency(sanitizeStringToNumber(amount));
+    const goal = amount;
     const monthLongName = getMonthLongName(reachDate);
     const fullYear = reachDate.getFullYear();
 
     return (
-      <Typography variant="caption" color="blueGray900" align="center">
-        You&apos;re planning<b> {months} monthly deposits </b>
-        to reach your
-        <b> {goal} </b>
-        goal by
-        <b>
-          &nbsp;
-          {monthLongName}
-          &nbsp;
-          {fullYear}.
-        </b>
+      <Typography variant="caption" color="blueGray900">
+        {"You're planning"}
+        <b>{` ${months} monthly deposits `}</b>
+        {'to reach your'}
+        <b> ${goal} </b>
+        {' goal by '}
+        <b>{`${monthLongName} ${fullYear}.`}</b>
       </Typography>
     );
   };
@@ -63,11 +59,12 @@ function App(): JSX.Element {
         </Typography>
       </S.Title>
 
-      <Card.Card>
+      <Card.Card as="main">
         <Card.CardHeader
           icon={buyHouse}
           title="Buy a house"
           subtitle="Saving goal"
+          titleAs="h1"
         />
 
         <Card.CardBody>

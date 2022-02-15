@@ -58,6 +58,16 @@ export const CalculationDetails = styled('div', {
   'div + div': {
     background: '$blueGray10',
     padding: toRem(24, 32),
+
+    '> span': {
+      textAlign: 'center',
+    },
+
+    '@desktop': {
+      '> span': {
+        textAlign: 'left',
+      },
+    },
   },
 
   '@desktop': {
