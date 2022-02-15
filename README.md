@@ -1,5 +1,12 @@
 # Origin Frontend Take-Home Assignment
 
+**Live DEMO**: [DEMO](https://frontend-take-home-assignment.vercel.app/)
+
+### Stack
+- CSS-in-JS [Stitches](https://stitches.dev/docs/introduction)
+- Store [Zustand](https://github.com/pmndrs/zustand)
+- Jest + React testing library
+
 **IMPORTANT**: you can choose any technology stack to implement this assignment. Using our stack is not a requirement in the selection process - we will consider exclusively the quality of your project (technology and product-wise) to evaluate your work. We've added a project structure in this repository (a buildwith react, redux, jest, styled-components and typescript) to save you time if you want to use it. If you prefer another stack, feel free to use it.
 
 Origin is a platform that helps our customers' employees put their financial lives on track.
